@@ -38,31 +38,29 @@
 
        
         <section class="col-lg-12" id="container">
-            <div class="row" id="information">
+            <div class="col-lg-12" id="information">
                 <div class="col-lg-6" id="gameOptions">
-                    <label for="difficultyOptions">Selecciona dificultad</label>
                     <select name="difficultyOptions" id="difficultyOptions">
-                            <option disabled selected> </option>
-                            <option value="low">Baja</option>
-                            <option value="medium">Media</option>
-                            <option value="high">Alta</option>
+                            <option disabled selected> Selecciona dificultad </option>
+                            <option value="low"> Baja </option>
+                            <option value="medium"> Media </option>
+                            <option value="high"> Alta </option>
                     </select>
                     <button  id="playButton">Jugar</button>
                 </div>
-                <div class="col-lg-6" id="results">
-                    <div class="col-lg-12">
-                    <label class="lblResults">Puntuación</label>
-                    <span class ="spnResults" id="points"></span>
+                    <div class="col-lg-6" id="points">
+                        <div class="col-lg-6">
+                            <label class="lblResults">Puntuación</label>
+                            <span class ="spnResults" id="points">0</span>
+                        </div>
+                        <div class="col-lg-6" id="timing">
+                            <label class="lblResults">Tiempo</label>
+                            <span class ="spnResults" id="timeObtained">0</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-12">
-                    <label class="lblResults">Tiempo</label>
-                    <span class ="spnResults" id="time"></span>
-                </div>
-                    
-                </div>
-            </div>
 
-            <div id="gamingTable">
+            <div id="gamingTable" class="col-lg-12">
                     <img src="images/gamingTable.jpg" alt="imagen Tablero" id="tableImage"  /> 
             </div>
  

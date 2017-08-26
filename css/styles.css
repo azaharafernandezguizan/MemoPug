@@ -2,8 +2,14 @@ body{
     margin:auto;
     width:80%;
     padding-top:2%;
-    background-color:#ffffe6;
-    color:#4d004d;
+    background: 
+    radial-gradient(circle, transparent 20%, silver 20%, silver 80%, transparent 80%, transparent),
+    radial-gradient(circle, transparent 20%, silver 20%, silver  80%, transparent 80%, transparent) 50px 50px,
+    linear-gradient(white 8px, transparent 8px) 0 -4px,
+    linear-gradient(90deg, white 8px, transparent 8px) -4px 0;
+    background-color: silver;
+    background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
+    color:black;
 }
 
 body, html{
@@ -11,10 +17,12 @@ body, html{
 }
 
 
-label, button{
-    color: #660066;
+label{
+    color: black;
     font-weight:bold;
+    margin-top: 2%;
 }
+
 
 
 .logoAfaya{
@@ -34,24 +42,82 @@ h1{
     font-size:48px;
 }
 
-header, button{
-    background-color: #ccf5ff;
+header{
+    text-decoration: none;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:black;
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
     border-radius: 12px 12px 12px 12px;
     -moz-border-radius: 12px 12px 12px 12px;
     -webkit-border-radius: 12px 12px 12px 12px;
     border: 0px solid #000000;
+    color:#ccffff;
 }
 
-select,button{
+button{
+  background: #141414;
+  background-image: -webkit-linear-gradient(top, #141414, #2980b9);
+  background-image: -moz-linear-gradient(top, #141414, #2980b9);
+  background-image: -ms-linear-gradient(top, #141414, #2980b9);
+  background-image: -o-linear-gradient(top, #141414, #2980b9);
+  background-image: linear-gradient(to bottom, #141414, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: #eff8fc;
+  font-size: 20px;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button:hover{
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #cbe2f2);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #cbe2f2);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #cbe2f2);
+    background-image: -o-linear-gradient(top, #3cb0fd, #cbe2f2);
+    background-image: linear-gradient(to bottom, #3cb0fd, #cbe2f2);
+    text-decoration: none;
+  }
+
+button{
     margin-left:5%;
     width:30%;
     min-height: 40px;
+    font-size:24px;
 }
 
 .row{
     margin-bottom:2%;
 }
 
+.spnResults{
+     width:40%;
+     background-color:#ccffff;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border: 0px solid #000000;
+    margin-top: 2%;
+    margin-left:5%;
+    min-height: 40px;
+    text-align:right;
+    padding:2%;
+}
+
+.lblResults{
+    padding:2%;
+}
 
 footer{
     height:1%;
@@ -60,7 +126,7 @@ footer{
 }
 
 header{
-    height:8%;
+    height:10%;
     margin-bottom:1%;
 }
 
@@ -81,4 +147,31 @@ section{
     width:60%;
     height:100%;
     margin-left:20%;
+     border-radius: 12px 12px 12px 12px;
+    -moz-border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border: 1px solid black;
 }
+
+option, select{
+    font-size:14px;
+    font-weight:bold;
+}
+
+select{
+    margin-left:5%;
+    width:50%;
+    min-height: 40px;
+    background-color:#ccffff;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border: 0px solid #000000;
+    text-align:right;
+}
+
+#gameOptions, #timing, #points, label{
+    float:left;
+}
+
+
