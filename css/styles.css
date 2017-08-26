@@ -1,0 +1,84 @@
+body{
+    margin:auto;
+    width:80%;
+    padding-top:2%;
+    background-color:#ffffe6;
+    color:#4d004d;
+}
+
+body, html{
+    height:98%;
+}
+
+
+label, button{
+    color: #660066;
+    font-weight:bold;
+}
+
+
+.logoAfaya{
+    float:left;
+}
+
+img, h1{
+    float:left;
+}
+
+h1{
+    margin-left:10%;
+}
+
+#title{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size:48px;
+}
+
+header, button{
+    background-color: #ccf5ff;
+    border-radius: 12px 12px 12px 12px;
+    -moz-border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border: 0px solid #000000;
+}
+
+select,button{
+    margin-left:5%;
+    width:30%;
+    min-height: 40px;
+}
+
+.row{
+    margin-bottom:2%;
+}
+
+
+footer{
+    height:1%;
+    margin-top:1%;
+    font-size:12px;
+}
+
+header{
+    height:8%;
+    margin-bottom:1%;
+}
+
+section{
+    height:80%;
+}
+
+#information{
+    height:10%;
+}
+
+#gamingTable{
+    height:80%;
+    margin:auto;
+}
+
+#tableImage{
+    width:60%;
+    height:100%;
+    margin-left:20%;
+}

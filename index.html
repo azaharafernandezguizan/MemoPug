@@ -11,84 +11,72 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" /> 
     
     <link rel="shortcut icon" href="images/icono.png"   type="image/png"/>   
-    <link rel="stylesheet" type="text/css" href="css/styles.css">	
     <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
-    <link rel ="stylesheet"  type="text/css" href="jqueryui/jquery-ui.theme.min.css"/>
-	<link rel ="stylesheet"  type="text/css" href="jqueryui/jquery-ui.min.css"/>
-	<link rel ="stylesheet"  type="text/css" href="jqueryui/jquery-ui.structure.min.css"/>	
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
         
 	<script type="text/javascript"  src="scripts/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript"  src="scripts/myscript.js"></script>
     <script type="text/javascript"  src="scripts/bootstrap.min.js"></script>
     <script type="text/javascript"  src="jqueryui/jquery-ui.min.js"></script>
+    <script type="text/javascript"  src="scripts/myscript.js"></script>
 </head>
 
 
 <body>
  
-        <header>
-            <img src="images/logoafayapeq.png" width="59" height="57" alt="logo Afaya"  /> 
-            <h1 id="title">MEMO PUG</h1>
+        <header class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <img src="images/logoafayapeq.png" width="59" height="57" alt="logo Afaya" id="logoAfaya"  /> 
+                    <h1 id="title">MEMO PUG</h1>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            
+            
         </header>
 
        
-        <section>
-            <div id="gameOptions">
-                <div class="row">
-                    <label class="lblOptions">Selecciona dificultad</label>
-                    <select>
-                            <option value="low">Bajo</option>
-                            <option value="medium">Medio</option>
-                            <option value="high">Alto</option>
+        <section class="col-lg-12" id="container">
+            <div class="row" id="information">
+                <div class="col-lg-6" id="gameOptions">
+                    <label for="difficultyOptions">Selecciona dificultad</label>
+                    <select name="difficultyOptions" id="difficultyOptions">
+                            <option disabled selected> </option>
+                            <option value="low">Baja</option>
+                            <option value="medium">Media</option>
+                            <option value="high">Alta</option>
                     </select>
+                    <button  id="playButton">Jugar</button>
                 </div>
-                <div class="row">
-                    <button id="playButton">Jugar</button>
-                </div>
-            </div>
-
-            <div id="results">
-                <div class="row">
+                <div class="col-lg-6" id="results">
+                    <div class="col-lg-12">
                     <label class="lblResults">Puntuación</label>
                     <span class ="spnResults" id="points"></span>
                 </div>
-                <div class="row">
+                <div class="col-lg-12">
                     <label class="lblResults">Tiempo</label>
                     <span class ="spnResults" id="time"></span>
+                </div>
+                    
                 </div>
             </div>
 
             <div id="gamingTable">
-
+                    <img src="images/gamingTable.jpg" alt="imagen Tablero" id="tableImage"  /> 
             </div>
  
         </section>
-
-
-       
-        <aside>
-                    <p>
-                        Los pugs son según las fuentes consultadas “la mezcla perfecta de atractivo canino y melancolía”, 
-                        ya que tiene una personalidad bastante parecida a la de un payaso, siempre tratando de alegrar a sus dueños.
-                    </p>
-                    <p>
-                        La croqueta o trocito de cielo para algunos es una porción de masa hecha con diversos ingredientes ligados con bechamel, 
-                        que se reboza en huevo y pan rallado y se fríe en aceite abundante. Puede hacerse de cualquier alimento imaginable y están
-                        tan buenas!!
-                    </p>
-        </aside>
-
-
-
-        
-        <footer>
-                <p>
+        <footer class="col-lg-12">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <img src="images/logoafayapeq.png" width="39" height="37" alt="logo Afaya" id="logoAfaya"  /> 
                     Afaya es un equipo de trabajo formado por Azahara Fernández Guizán y Juan Manuel Rodríguez Pérez,
                     búscanos y siguenos en redes sociales!
-                </p>
-                <p>
-                    Todas las imagenes utilizadas son libres
-                </p>
+                    <br/>
+                    Todas las imágenes utilizadas son libres.
+                </div>
+                <div class="col-lg-1"></div>
         </footer>
 
 
