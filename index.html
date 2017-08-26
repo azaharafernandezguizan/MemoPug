@@ -1,82 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>MEMO PUG</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="author" content="Afaya desarrollos - Azahara Fdez - Juanma Rguez"/>
-    <meta name="generator" content="Visual Studio Code 1.14"/>
-    <meta name="robots" content="index"/>
-    <meta name="keywords" content="Afaya desarrollos,web game,jam,todasgamers,croquetas,pug,jquery ui,jquery,html,css3"/>
-    <meta name="description" content="Juego html5 para jam de todasgamers"/> 
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" /> 
-    
-    <link rel="shortcut icon" href="images/icono.png"   type="image/png"/>   
-    <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Afaya desarrollos - Azahara Fdez - Juanma Rguez" />
+    <meta name="generator" content="Visual Studio Code 1.14" />
+    <meta name="robots" content="index" />
+    <meta name="keywords" content="Afaya desarrollos,web game,jam,todasgamers,croquetas,pug,jquery ui,jquery,html,css3" />
+    <meta name="description" content="Juego html5 para jam de todasgamers" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="shortcut icon" href="images/icono.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-        
-	<script type="text/javascript"  src="scripts/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript"  src="scripts/bootstrap.min.js"></script>
-    <script type="text/javascript"  src="jqueryui/jquery-ui.min.js"></script>
-    <script type="text/javascript"  src="scripts/myscript.js"></script>
+
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/myscript.js"></script>
 </head>
 
 
 <body>
- 
-        <header class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
-                    <img src="images/logoafayapeq.png" width="59" height="57" alt="logo Afaya" id="logoAfaya"  /> 
-                    <h1 id="title">MEMO PUG</h1>
-                </div>
-                <div class="col-lg-3"></div>
-            </div>
-            
-            
-        </header>
 
-       
-        <section class="col-lg-12" id="container">
-            <div class="col-lg-12" id="information">
-                <div class="col-lg-6" id="gameOptions">
-                    <select name="difficultyOptions" id="difficultyOptions">
+    <header class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <img src="images/logoafayapeq.png" width="59" height="57" alt="logo Afaya" id="logoAfaya" />
+                <h1 id="title">MEMO PUG</h1>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </header>
+
+
+    <section class="col-lg-12" id="container">
+        <div class="col-lg-12" id="information">
+            <div class="col-lg-6" id="gameOptions">
+                <select name="difficultyOptions" id="difficultyOptions">
                             <option disabled selected> Selecciona dificultad </option>
                             <option value="low"> Baja </option>
                             <option value="medium"> Media </option>
                             <option value="high"> Alta </option>
                     </select>
-                    <button  id="playButton">Jugar</button>
-                </div>
-                    <div class="col-lg-6" id="points">
-                        <div class="col-lg-6">
-                            <label class="lblResults">Puntuación</label>
-                            <span class ="spnResults" id="points">0</span>
-                        </div>
-                        <div class="col-lg-6" id="timing">
-                            <label class="lblResults">Tiempo</label>
-                            <span class ="spnResults" id="timeObtained">0</span>
-                        </div>
-                    </div>
-                </div>
-
-            <div id="gamingTable" class="col-lg-12">
-                    <img src="images/gamingTable.jpg" alt="imagen Tablero" id="tableImage"  /> 
+                <button id="playButton">Jugar</button>
             </div>
- 
-        </section>
-        <footer class="col-lg-12">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10">
-                    <img src="images/logoafayapeq.png" width="39" height="37" alt="logo Afaya" id="logoAfaya"  /> 
-                    Afaya es un equipo de trabajo formado por Azahara Fernández Guizán y Juan Manuel Rodríguez Pérez,
-                    búscanos y siguenos en redes sociales!
-                    <br/>
-                    Todas las imágenes utilizadas son libres.
+            <div class="col-lg-6" id="points">
+                <div class="col-lg-6">
+                    <label class="lblResults">Puntuación</label>
+                    <span class="spnResults" id="points">0</span>
                 </div>
-                <div class="col-lg-1"></div>
-        </footer>
+                <div class="col-lg-6" id="timing">
+                    <label class="lblResults">Tiempo</label>
+                    <span class="spnResults" id="timeObtained">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="gamingTable" class="col-lg-12">
+            <img src="images/gamingTable.jpg" alt="imagen Tablero" id="tableImage" />
+        </div>
+
+    </section>
+    <footer class="col-lg-12">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <img src="images/logoafayapeq.png" width="39" height="37" alt="logo Afaya" id="logoAfaya" /> Afaya es un equipo
+            de trabajo formado por Azahara Fernández Guizán y Juan Manuel Rodríguez Pérez, búscanos y siguenos en redes sociales!
+            <br/> Todas las imágenes utilizadas son libres.
+        </div>
+        <div class="col-lg-1"></div>
+    </footer>
 
 
 </body>
+
 </html>
