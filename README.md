@@ -1,2 +1,2 @@
 # MemoPug
-Game to find the couple of identical photos in a matrix
+Juego de emparejar imagenes identicas dentro de una matriz. Empezamos!
