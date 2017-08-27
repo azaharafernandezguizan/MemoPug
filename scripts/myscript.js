@@ -257,7 +257,6 @@ function testAction(idBoton) {
     }
 
     if(totalImagenesAcertar == countAciertos){
-        debugger;
         var finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
         pararCronometro();
         finalVisor.innerHTML = finalTiming;
