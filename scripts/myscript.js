@@ -79,7 +79,7 @@ function cronometro() {
 function newgame() {
     countAciertos = 0;
     visor = document.getElementById("timeObtained");
-    points = document.getElementById("points");
+    points = document.getElementById("lblPoints");
 
     if (isCronoRunning) {
         pararCronometro();
@@ -113,7 +113,8 @@ function newgame() {
         hideError();
         var botonJugar = document.getElementById("playButton");
         botonJugar.firstChild.data = "Nuevo Juego";
-        points.innerText="0";
+        debugger;
+        points.firstChild.data="0";
         loadMatrizBoard(totalImagesInMatriz);
         paintBoard();
         inicioCronometro();
@@ -245,7 +246,7 @@ function testAction(idBoton) {
             setTimeout(resetOnImages, turnTime);
         }else{
             countAciertos++;
-            points.innerText = countAciertos;
+            points.firstChild.data = countAciertos;
         }
     }
 
@@ -253,7 +254,7 @@ function testAction(idBoton) {
         var finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
         pararCronometro();
         visor.innerHTML = finalTiming;
-        points.innerText = countAciertos;
+        points.firstChild.data = countAciertos;
         formatGreeting();
     }
 }
