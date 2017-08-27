@@ -222,6 +222,7 @@ function paintBoard() {
 
     tabla.appendChild(tblBody);
     tabla.setAttribute("border", "2");
+    tabla.setAttribute("style", "margin: auto;");
 
     $("#gamingTable").html(tabla);
 }
