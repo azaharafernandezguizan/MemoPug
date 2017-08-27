@@ -79,7 +79,10 @@ function cronometro() {
 function newgame() {
     countAciertos = 0;
     visor = document.getElementById("timeObtained");
+    finalVisor = document.getElementById("finalTime");
     points = document.getElementById("lblPoints");
+    $("#timeObtained").css("display", "inline");
+    $("#finalTime").css("display", "none");
 
     if (isCronoRunning) {
         pararCronometro();
@@ -251,9 +254,12 @@ function testAction(idBoton) {
     }
 
     if(totalImagenesAcertar == countAciertos){
+        debugger;
         var finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
         pararCronometro();
-        visor.innerHTML = finalTiming;
+        finalVisor.innerHTML = finalTiming;
+        $("#timeObtained").css("display", "none");
+        $("#finalTime").css("display", "inline");
         points.firstChild.data = countAciertos;
         formatGreeting();
     }
@@ -268,6 +274,7 @@ function formatGreeting() {
     $("#ErrorMessage").css("font-weight", "bold");
     $("#ErrorMessage").css("font-size", "24px");
     $("#ErrorMessage").css("text-align", "center");
+    $("#ErrorMessage").css("display", "block");
 }
 
 function resetOnImages(){
