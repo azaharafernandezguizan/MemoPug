@@ -43,7 +43,6 @@ function pararCronometro() {
     visor.innerHTML = "00:00:00:00:00";
 }
 
-
 function cronometro() {
     if (centesimas < 99) {
         centesimas++;
@@ -110,8 +109,6 @@ function newgame() {
             isSelected = false;
     }
 
-    
-
     if (isSelected) {
         hideError();
         var botonJugar = document.getElementById("playButton");
@@ -123,7 +120,6 @@ function newgame() {
         isCronoRunning = true;
         totalImagenesAcertar = totalImagesInMatriz / 2;
     }
-
 }
 
 function formatError() {
@@ -254,7 +250,6 @@ function testAction(idBoton) {
     }
 
     if(totalImagenesAcertar == countAciertos){
-
         var finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
         pararCronometro();
         visor.innerHTML = finalTiming;
@@ -263,9 +258,6 @@ function testAction(idBoton) {
     }
 }
 
-<<<<<<< HEAD
-function resetOnImages(){
-=======
 function formatGreeting() {
     var errorDisplayed = document.createTextNode("Enhorabuena! Nivel conseguido!");
     var divError = document.getElementById("ErrorMessage");
@@ -277,8 +269,7 @@ function formatGreeting() {
     $("#ErrorMessage").css("text-align", "center");
 }
 
-function resetOnImages(idButtonNewPulse,idImageNewPulse){
->>>>>>> 2fb0b800fa293bea29719ed3a5334d529b6e7095
+function resetOnImages(){
     $('#' + idButtonNewPulse).css("display", "block");
     $('#' + idImageNewPulse).css("display", "none");
     $('#' + idButtonOldPulse).css("display", "block");
