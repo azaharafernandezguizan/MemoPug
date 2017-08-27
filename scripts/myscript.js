@@ -26,6 +26,7 @@ let idImageNewPulse = "";
 
 let countAciertos = 0;
 let totalImagenesAcertar = 0;
+let finalTiming = "";
 
 function inicioCronometro() {
     centesimas = 0;
@@ -116,7 +117,6 @@ function newgame() {
         hideError();
         var botonJugar = document.getElementById("playButton");
         botonJugar.firstChild.data = "Nuevo Juego";
-        debugger;
         points.firstChild.data="0";
         loadMatrizBoard(totalImagesInMatriz);
         paintBoard();
@@ -252,17 +252,16 @@ function testAction(idBoton) {
             setTimeout(resetOnImages, turnTime);
         }else{
             countAciertos++;
-            points.firstChild.data = countAciertos;
         }
     }
 
     if(totalImagenesAcertar == countAciertos){
-        var finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
+        finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
         pararCronometro();
         finalVisor.innerHTML = finalTiming;
         $("#timeObtained").css("display", "none");
         $("#finalTime").css("display", "inline");
-        points.firstChild.data = countAciertos;
+        points.firstChild.data = calcularPuntos();
         formatGreeting();
     }
 }
@@ -286,4 +285,11 @@ function resetOnImages(){
     $('#' + idImageOldPulse).css("display", "none");
     $("#gamingTable").prop('disabled',false);
     $("#gamingTable :input").removeAttr("disabled");
+}
+
+function calcularPuntos(){
+    var arrayTimes = finalTiming.split(":");
+    var puntos = (totalImagenesAcertar * 50) - ((arrayTimes[0] * 3600) + ( arrayTimes[1] * 60) + arrayTimes[2]);
+
+    return puntos;
 }
