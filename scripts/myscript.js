@@ -23,6 +23,9 @@ let idButtonOldPulse = "";
 let idImageOldPulse = "";
 let numberImageOldPulse = 0;
 
+let countAciertos = 0;
+let totalImagenesAcertar = 0;
+
 function inicioCronometro() {
     controlCronometro = setInterval(cronometro, 10);
 }
@@ -69,11 +72,11 @@ function cronometro() {
 
 //actions
 function newgame() {
+    countAciertos = 0;
     visor = document.getElementById("timeObtained");
     if (isCronoRunning) {
         pararCronometro();
     }
-
 
     var difficultySelected = $("#difficultyOptions")[0].value;
     var isSelected = true;
@@ -97,11 +100,11 @@ function newgame() {
                 formatError();
             }
             isSelected = false;
-
     }
 
-    if (isSelected) {
+    
 
+    if (isSelected) {
         hideError();
         var botonJugar = document.getElementById("playButton");
         botonJugar.firstChild.data = "Nuevo Juego";
@@ -109,6 +112,7 @@ function newgame() {
         paintBoard();
         inicioCronometro();
         isCronoRunning = true;
+        totalImagenesAcertar = totalImagesInMatriz / 2;
     }
 
 }
@@ -218,20 +222,37 @@ function testAction(idBoton) {
     let imageSufId = idBoton.replace("btnBoard", "");
     let image = idBoton.split("_")[1];
     let idButtonNewPulse = idBoton;
+    let idImageNewPulse = "btnImg" + imageSufId;
 
     if (firstButtonPulse) {
         firstButtonPulse = false;
         idButtonOldPulse = idButtonNewPulse;
-        idImageOldPulse = "btnImg" + imageSufId;
+        idImageOldPulse = idImageNewPulse;
         numberImageOldPulse = image;
 
-        $('#' + idBoton).css("display", "none");
-        $('#' + idImageOldPulse).css("display", "block-inline");
-
-        alert("Pulsado primer boton " + idButtonOldPulse + " imagen " + numberImageOldPulse);
+        $('#' + idButtonOldPulse).css("display", "none");
+        $('#' + idImageOldPulse).css("display", "block");
     } else {
         firstButtonPulse = true;
-        alert("Pulsado primer boton " + idButtonNewPulse + " imagen " + image);
+        $('#' + idButtonNewPulse).css("display", "none");
+        $('#' + idImageNewPulse).css("display", "block");
+
+        
+        if(numberImageOldPulse != image){
+            setTimeout(resetOnImages(idButtonNewPulse,idImageNewPulse), 3000);
+        }else{
+            countAciertos++;
+        }
     }
 
+    if(totalImagenesAcertar == countAciertos){
+        pararCronometro();
+    }
+}
+
+function resetOnImages(idButtonNewPulse,idImageNewPulse){
+    $('#' + idButtonNewPulse).css("display", "block");
+    $('#' + idImageNewPulse).css("display", "none");
+    $('#' + idButtonOldPulse).css("display", "block");
+    $('#' + idImageOldPulse).css("display", "none");
 }
