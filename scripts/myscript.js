@@ -13,11 +13,67 @@ let highDifficultyRow = 15;
 let totalImagesInMatriz = 0;
 let matrizBoard;
 
+var centesimas = 0;
+var segundos = 0;
+var minutos = 0;
+var horas = 0;
+var isCronoRunning = false;
+
+function inicioCronometro () {
+	controlCronometro = setInterval(cronometro,10);
+}
+
+function pararCronometro () {
+	centesimas = 0;
+	segundos = 0;
+	minutos = 0;
+	horas = 0;
+    visor.innerHTML = "00:00:00:00:00";
+}
+
+function cronometro () {
+	if (centesimas < 99) {
+		centesimas++;
+		if (centesimas < 10) { centesimas = "0"+centesimas }
+        visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
+	}
+	if (centesimas == 99) {
+		centesimas = -1;
+	}
+	if (centesimas == 0) {
+		segundos ++;
+		if (segundos < 10) { segundos = "0"+segundos }
+		visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
+	}
+	if (segundos == 59) {
+		segundos = -1;
+	}
+	if ( (centesimas == 0)&&(segundos == 0) ) {
+		minutos++;
+		if (minutos < 10) { minutos = "0"+minutos }
+		visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
+	}
+	if (minutos == 59) {
+		minutos = -1;
+	}
+	if ( (centesimas == 0)&&(segundos == 0)&&(minutos == 0) ) {
+		horas ++;
+		if (horas < 10) { horas = "0"+horas }
+		visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
+	}
+}
 
 //actions
 function newgame() {
-    var difficultySelected = $("#difficultyOptions")[0].value;
+    visor=document.getElementById("timeObtained");
+    if(isCronoRunning){
+        pararCronometro();
+    }
+    
 
+    var difficultySelected = $("#difficultyOptions")[0].value;
+    var isSelected = true;
+    
     switch (difficultySelected) {
         case 'low':
             matrizBoard = createMatriz(lowDifficultyCol, lowDifficultyRow);
@@ -31,10 +87,41 @@ function newgame() {
             matrizBoard = createMatriz(highDifficultyCol, highDifficultyRow);
             totalImagesInMatriz = highDifficultyCol * highDifficultyRow;
             break;
+        default:
+            var errorMessageBox = document.getElementById("ErrorMessage");
+            if(errorMessageBox.childNodes.length==0){
+                formatError();
+            }
+            isSelected= false;
+            
     }
 
-    loadMatrizBoard(totalImagesInMatriz);
-    paintBoard();
+    if(isSelected){
+
+        hideError();
+        var botonJugar=document.getElementById("playButton");
+        botonJugar.firstChild.data = "Nuevo Juego";
+        loadMatrizBoard(totalImagesInMatriz);
+        paintBoard();
+        inicioCronometro();
+        isCronoRunning=true;
+    }
+    
+}
+
+function formatError(){
+    var errorDisplayed = document.createTextNode("Debes seleccionar un nivel de dificultad!");
+    var divError = document.getElementById("ErrorMessage");
+    divError.appendChild(errorDisplayed);
+    $("#ErrorMessage").css("background-color", "yellow");
+    $("#ErrorMessage").css("color", "black");
+    $("#ErrorMessage").css("font-weight", "bold");
+    $("#ErrorMessage").css("font-size", "24px");
+    $("#ErrorMessage").css("text-align", "center");
+}
+
+function hideError(){
+    $("#ErrorMessage").css("display", "none");
 }
 
 function createMatriz(rows, cols) {
