@@ -186,7 +186,7 @@ function paintBoard() {
             btn.className = "btnBoard";
             btn.id = "btnBoard" + matrizBoard[i][j];
             btn.onclick = "testAction("+btn.id+","+matrizBoard[i][j]+")";
-            btn.style = "background-image: url('images/afayaReverse.jpg');height:150px;width:150px;";
+            btn.style = "background-image: url('images/afayaReverse.jpg');height:125px;width:125px;";
 
             var img = document.createElement('img');
             img.src = "images/" + matrizBoard[i][j] + ".jpg";
