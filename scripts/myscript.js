@@ -2,7 +2,7 @@
 //variables
 let imagesRoute = '../images/';
 let reverseImage = '../images/afayaReverse.jpg';
-let first = true;
+let firstButtonPulse = true;
 let totalImagesApp = 71;
 let lowDifficultyRow = 4;
 let lowDifficultyCol = 4;
@@ -13,11 +13,15 @@ let highDifficultyCol = 10;
 let totalImagesInMatriz = 0;
 let matrizBoard;
 
-var centesimas = 0;
-var segundos = 0;
-var minutos = 0;
-var horas = 0;
-var isCronoRunning = false;
+let centesimas = 0;
+let segundos = 0;
+let minutos = 0;
+let horas = 0;
+let isCronoRunning = false;
+
+let idButtonOldPulse = "";
+let idImageOldPulse = "";
+let numberImageOldPulse = 0;
 
 function inicioCronometro () {
 	controlCronometro = setInterval(cronometro,10);
@@ -171,26 +175,27 @@ function loadMatrizBoard(imagesNumber) {
 }
 
 function paintBoard() {
-    var tabla = document.createElement("table");
-    var tblBody = document.createElement("tbody");
+    let tabla = document.createElement("table");
+    let tblBody = document.createElement("tbody");
 
     // Crea las celdas
-    for (var i = 0; i < matrizBoard.length; i++) {
-        var hilera = document.createElement("tr");
+    for (i = 0; i < matrizBoard.length; i++) {
+        let hilera = document.createElement("tr");
 
-        for (var j = 0; j < matrizBoard[0].length; j++) {
-            var celda = document.createElement("td");
+        for (j = 0; j < matrizBoard[0].length; j++) {
+            let celda = document.createElement("td");
 
-            var btn = document.createElement('input');
+            let btn = document.createElement('input');
             btn.type = "button";
             btn.className = "btnBoard";
-            btn.id = "btnBoard" + matrizBoard[i][j];
-            btn.onclick = "testAction("+btn.id+","+matrizBoard[i][j]+")";
+            btn.id = "btnBoard" +i+j+"_"+ matrizBoard[i][j];
+            btn.onclick = function() {testAction(btn.id)};
             btn.style = "background-image: url('images/afayaReverse.jpg');height:150px;width:150px;";
 
-            var img = document.createElement('img');
+            let img = document.createElement('img');
             img.src = "images/" + matrizBoard[i][j] + ".jpg";
             img.alt = "imagen pug numero " + matrizBoard[i][j];
+            img.id = "btnImg" +i+j+"_"+ matrizBoard[i][j];
             img.title = "imagen para emparejar numero " + matrizBoard[i][j];
             img.style = "display:none;"
 
@@ -209,6 +214,24 @@ function paintBoard() {
     $("#gamingTable").html(tabla);
 }
 
-function testAction(idBoton,numImage) {
-    alert("Pulsado boton " + idBoton + " e imagen "+ numImage);
+function testAction(idBoton) {
+    let imageSufId = idBoton.replace("btnBoard", "");
+    let image = idBoton.split("_")[1];
+    let idButtonNewPulse = idBoton;
+
+    if(firstButtonPulse){
+        firstButtonPulse = false;
+        idButtonOldPulse = idButtonNewPulse;
+        idImageOldPulse = "btnImg"+imageSufId;
+        numberImageOldPulse = image;
+
+        $('#'+idBoton).css("display","none");
+        $('#'+idImageOldPulse).css("display","block-inline");
+
+        alert("Pulsado primer boton " + idButtonOldPulse + " imagen " +  numberImageOldPulse);
+    }else{
+        firstButtonPulse = true;
+        alert("Pulsado primer boton " + idButtonNewPulse + " imagen " +  image);
+    }
+
 }
