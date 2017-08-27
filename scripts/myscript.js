@@ -100,7 +100,7 @@ function paintBoard() {
             btn.type = "button";
             btn.className = "btnBoard";
             btn.id = "btnBoard"+matrizBoard[i][j];
-            btn.onclick = (function(this) {return function() {testAction(this);}})(this);
+            btn.onclick = (function() {return function() {testAction();}})();
 
             var img = document.createElement('img');
             img.src = "images/"+matrizBoard[i][j]+"jpg";
