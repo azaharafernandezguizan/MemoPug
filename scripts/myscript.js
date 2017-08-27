@@ -89,11 +89,11 @@ function paintBoard() {
     var tblBody = document.createElement("tbody");
 
     // Crea las celdas
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < matrizBoard.length; i++) {
        
         var hilera = document.createElement("tr");
 
-        for (var j = 0; j < 2; j++) {
+        for (var j = 0; j < matrizBoard[0].length; j++) {
             var celda = document.createElement("td");
 
             var btn = document.createElement('input');
