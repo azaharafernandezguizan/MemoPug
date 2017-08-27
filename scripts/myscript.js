@@ -28,6 +28,10 @@ let countAciertos = 0;
 let totalImagenesAcertar = 0;
 
 function inicioCronometro() {
+    centesimas = 0;
+    segundos = 0;
+    minutos = 0;
+    horas = 0;
     controlCronometro = setInterval(cronometro, 10);
 }
 
@@ -38,6 +42,7 @@ function pararCronometro() {
     horas = 0;
     visor.innerHTML = "00:00:00:00:00";
 }
+
 
 function cronometro() {
     if (centesimas < 99) {
@@ -75,6 +80,8 @@ function cronometro() {
 function newgame() {
     countAciertos = 0;
     visor = document.getElementById("timeObtained");
+    points = document.getElementById("points");
+
     if (isCronoRunning) {
         pararCronometro();
     }
@@ -109,6 +116,7 @@ function newgame() {
         hideError();
         var botonJugar = document.getElementById("playButton");
         botonJugar.firstChild.data = "Nuevo Juego";
+        points.innerText="0";
         loadMatrizBoard(totalImagesInMatriz);
         paintBoard();
         inicioCronometro();
@@ -241,15 +249,36 @@ function testAction(idBoton) {
             setTimeout(resetOnImages, turnTime);
         }else{
             countAciertos++;
+            points.innerText = countAciertos;
         }
     }
 
     if(totalImagenesAcertar == countAciertos){
+
+        var finalTiming = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
         pararCronometro();
+        visor.innerHTML = finalTiming;
+        points.innerText = countAciertos;
+        formatGreeting();
     }
 }
 
+<<<<<<< HEAD
 function resetOnImages(){
+=======
+function formatGreeting() {
+    var errorDisplayed = document.createTextNode("Enhorabuena! Nivel conseguido!");
+    var divError = document.getElementById("ErrorMessage");
+    divError.appendChild(errorDisplayed);
+    $("#ErrorMessage").css("background-color", "green");
+    $("#ErrorMessage").css("color", "black");
+    $("#ErrorMessage").css("font-weight", "bold");
+    $("#ErrorMessage").css("font-size", "24px");
+    $("#ErrorMessage").css("text-align", "center");
+}
+
+function resetOnImages(idButtonNewPulse,idImageNewPulse){
+>>>>>>> 2fb0b800fa293bea29719ed3a5334d529b6e7095
     $('#' + idButtonNewPulse).css("display", "block");
     $('#' + idImageNewPulse).css("display", "none");
     $('#' + idButtonOldPulse).css("display", "block");
