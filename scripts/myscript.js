@@ -23,61 +23,61 @@ let idButtonOldPulse = "";
 let idImageOldPulse = "";
 let numberImageOldPulse = 0;
 
-function inicioCronometro () {
-	controlCronometro = setInterval(cronometro,10);
+function inicioCronometro() {
+    controlCronometro = setInterval(cronometro, 10);
 }
 
-function pararCronometro () {
-	centesimas = 0;
-	segundos = 0;
-	minutos = 0;
-	horas = 0;
+function pararCronometro() {
+    centesimas = 0;
+    segundos = 0;
+    minutos = 0;
+    horas = 0;
     visor.innerHTML = "00:00:00:00:00";
 }
 
-function cronometro () {
-	if (centesimas < 99) {
-		centesimas++;
-		if (centesimas < 10) { centesimas = "0"+centesimas }
-        visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
-	}
-	if (centesimas == 99) {
-		centesimas = -1;
-	}
-	if (centesimas == 0) {
-		segundos ++;
-		if (segundos < 10) { segundos = "0"+segundos }
-		visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
-	}
-	if (segundos == 59) {
-		segundos = -1;
-	}
-	if ( (centesimas == 0)&&(segundos == 0) ) {
-		minutos++;
-		if (minutos < 10) { minutos = "0"+minutos }
-		visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
-	}
-	if (minutos == 59) {
-		minutos = -1;
-	}
-	if ( (centesimas == 0)&&(segundos == 0)&&(minutos == 0) ) {
-		horas ++;
-		if (horas < 10) { horas = "0"+horas }
-		visor.innerHTML=horas+":"+minutos+":"+segundos+":"+centesimas;
-	}
+function cronometro() {
+    if (centesimas < 99) {
+        centesimas++;
+        if (centesimas < 10) { centesimas = "0" + centesimas }
+        visor.innerHTML = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
+    }
+    if (centesimas == 99) {
+        centesimas = -1;
+    }
+    if (centesimas == 0) {
+        segundos++;
+        if (segundos < 10) { segundos = "0" + segundos }
+        visor.innerHTML = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
+    }
+    if (segundos == 59) {
+        segundos = -1;
+    }
+    if ((centesimas == 0) && (segundos == 0)) {
+        minutos++;
+        if (minutos < 10) { minutos = "0" + minutos }
+        visor.innerHTML = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
+    }
+    if (minutos == 59) {
+        minutos = -1;
+    }
+    if ((centesimas == 0) && (segundos == 0) && (minutos == 0)) {
+        horas++;
+        if (horas < 10) { horas = "0" + horas }
+        visor.innerHTML = horas + ":" + minutos + ":" + segundos + ":" + centesimas;
+    }
 }
 
 //actions
 function newgame() {
-    visor=document.getElementById("timeObtained");
-    if(isCronoRunning){
+    visor = document.getElementById("timeObtained");
+    if (isCronoRunning) {
         pararCronometro();
     }
-    
+
 
     var difficultySelected = $("#difficultyOptions")[0].value;
     var isSelected = true;
-    
+
     switch (difficultySelected) {
         case 'low':
             matrizBoard = createMatriz(lowDifficultyRow, lowDifficultyCol);
@@ -93,27 +93,27 @@ function newgame() {
             break;
         default:
             var errorMessageBox = document.getElementById("ErrorMessage");
-            if(errorMessageBox.childNodes.length==0){
+            if (errorMessageBox.childNodes.length == 0) {
                 formatError();
             }
-            isSelected= false;
-            
+            isSelected = false;
+
     }
 
-    if(isSelected){
+    if (isSelected) {
 
         hideError();
-        var botonJugar=document.getElementById("playButton");
+        var botonJugar = document.getElementById("playButton");
         botonJugar.firstChild.data = "Nuevo Juego";
         loadMatrizBoard(totalImagesInMatriz);
         paintBoard();
         inicioCronometro();
-        isCronoRunning=true;
+        isCronoRunning = true;
     }
-    
+
 }
 
-function formatError(){
+function formatError() {
     var errorDisplayed = document.createTextNode("Debes seleccionar un nivel de dificultad!");
     var divError = document.getElementById("ErrorMessage");
     divError.appendChild(errorDisplayed);
@@ -124,7 +124,7 @@ function formatError(){
     $("#ErrorMessage").css("text-align", "center");
 }
 
-function hideError(){
+function hideError() {
     $("#ErrorMessage").css("display", "none");
 }
 
@@ -188,14 +188,14 @@ function paintBoard() {
             let btn = document.createElement('input');
             btn.type = "button";
             btn.className = "btnBoard";
-            btn.id = "btnBoard" +i+j+"_"+ matrizBoard[i][j];
-            btn.onclick = function() {testAction(btn.id)};
-            btn.style = "background-image: url('images/afayaReverse.jpg');height:150px;width:150px;";
+            btn.id = "btnBoard" + i + j + "_" + matrizBoard[i][j];
+            btn.onclick = function () { testAction(btn.id) };
+            btn.style = "background-image: url('images/afayaReverse.jpg');height:125px;width:125px;";
 
             let img = document.createElement('img');
             img.src = "images/" + matrizBoard[i][j] + ".jpg";
             img.alt = "imagen pug numero " + matrizBoard[i][j];
-            img.id = "btnImg" +i+j+"_"+ matrizBoard[i][j];
+            img.id = "btnImg" + i + j + "_" + matrizBoard[i][j];
             img.title = "imagen para emparejar numero " + matrizBoard[i][j];
             img.style = "display:none;"
 
@@ -219,19 +219,19 @@ function testAction(idBoton) {
     let image = idBoton.split("_")[1];
     let idButtonNewPulse = idBoton;
 
-    if(firstButtonPulse){
+    if (firstButtonPulse) {
         firstButtonPulse = false;
         idButtonOldPulse = idButtonNewPulse;
-        idImageOldPulse = "btnImg"+imageSufId;
+        idImageOldPulse = "btnImg" + imageSufId;
         numberImageOldPulse = image;
 
-        $('#'+idBoton).css("display","none");
-        $('#'+idImageOldPulse).css("display","block-inline");
+        $('#' + idBoton).css("display", "none");
+        $('#' + idImageOldPulse).css("display", "block-inline");
 
-        alert("Pulsado primer boton " + idButtonOldPulse + " imagen " +  numberImageOldPulse);
-    }else{
+        alert("Pulsado primer boton " + idButtonOldPulse + " imagen " + numberImageOldPulse);
+    } else {
         firstButtonPulse = true;
-        alert("Pulsado primer boton " + idButtonNewPulse + " imagen " +  image);
+        alert("Pulsado primer boton " + idButtonNewPulse + " imagen " + image);
     }
 
 }
