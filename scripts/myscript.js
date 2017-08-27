@@ -1,7 +1,5 @@
 ///// Game Logic /////
 //variables
-let imagesRoute = '../images/';
-let reverseImage = '../images/afayaReverse.jpg';
 let firstButtonPulse = true;
 let totalImagesApp = 71;
 let lowDifficultyRow = 4;
@@ -11,6 +9,7 @@ let mediumDifficultyCol = 8;
 let highDifficultyRow = 4;
 let highDifficultyCol = 10;
 let totalImagesInMatriz = 0;
+let turnTime = 750;
 let matrizBoard;
 
 let centesimas = 0;
@@ -22,6 +21,8 @@ let isCronoRunning = false;
 let idButtonOldPulse = "";
 let idImageOldPulse = "";
 let numberImageOldPulse = 0;
+let idButtonNewPulse = "";
+let idImageNewPulse = "";
 
 let countAciertos = 0;
 let totalImagenesAcertar = 0;
@@ -188,8 +189,8 @@ function paintBoard() {
 
         for (j = 0; j < matrizBoard[0].length; j++) {
             let celda = document.createElement("td");
-
             let btn = document.createElement('input');
+
             btn.type = "button";
             btn.className = "btnBoard";
             btn.id = "btnBoard" + i + j + "_" + matrizBoard[i][j];
@@ -211,7 +212,6 @@ function paintBoard() {
         tblBody.appendChild(hilera);
     }
 
-
     tabla.appendChild(tblBody);
     tabla.setAttribute("border", "2");
 
@@ -221,8 +221,8 @@ function paintBoard() {
 function testAction(idBoton) {
     let imageSufId = idBoton.replace("btnBoard", "");
     let image = idBoton.split("_")[1];
-    let idButtonNewPulse = idBoton;
-    let idImageNewPulse = "btnImg" + imageSufId;
+    idButtonNewPulse = idBoton;
+    idImageNewPulse = "btnImg" + imageSufId;
 
     if (firstButtonPulse) {
         firstButtonPulse = false;
@@ -236,10 +236,9 @@ function testAction(idBoton) {
         firstButtonPulse = true;
         $('#' + idButtonNewPulse).css("display", "none");
         $('#' + idImageNewPulse).css("display", "block");
-
-        
+     
         if(numberImageOldPulse != image){
-            setTimeout(resetOnImages(idButtonNewPulse,idImageNewPulse), 3000);
+            setTimeout(resetOnImages, turnTime);
         }else{
             countAciertos++;
         }
@@ -250,7 +249,7 @@ function testAction(idBoton) {
     }
 }
 
-function resetOnImages(idButtonNewPulse,idImageNewPulse){
+function resetOnImages(){
     $('#' + idButtonNewPulse).css("display", "block");
     $('#' + idImageNewPulse).css("display", "none");
     $('#' + idButtonOldPulse).css("display", "block");
