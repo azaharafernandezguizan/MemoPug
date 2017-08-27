@@ -16,7 +16,7 @@ let matrizBoard;
 
 //actions
 function newgame() {
-    var difficultySelected = $("#difficultyOptions").value;
+    var difficultySelected = $("#difficultyOptions")[0].value;
 
     switch (difficultySelected) {
         case 'low':
@@ -53,36 +53,38 @@ function loadMatrizBoard(imagesNumber) {
     var numbersFound = new Array(imagesToSearch);
 
     numbersFound.forEach(function (item, index, array) {
-        array[index] = -1;
-    });
-
-    for (i = 0; i < numbersFound.length; i++) {
         numberFound = false;
         while (!numberFound) {
-            var count = 0;
             var rdmNumber = Math.ceil(Math.random() * totalImagesApp);
 
-            for (k = 0; k < i + 1; k++) {
-                if (numbersFound[k] == rdmNumber) {
-                    count++;
-                    break;
-                }
-            }
-
-            if (count == 0) {
-                numbersFound[i] = rdmNumber;
+            if (numbersFound.indexOf(rdmNumber) == -1) {
+                array[index] = rdmNumber;
                 numberFound = true;
             }
         }
-    }
+    });
 
-    //inicializar matrizBoard a -1
-    //recorrer array numbersFound dos veces
-    //obtener aleatoriamente fila y columna y comprobar esta vacia
+    var numbersDuplicate = numbersFound.concat(numbersFound);
+    var positionFound = new Array(numbersDuplicate.length);
+
+    for (i = 0; i < matrizBoard.length; i++) {
+        for (i = 0; i < matrizBoard[0].length; i++) {
+            numberFound = false;
+            while (!numberFound) {
+                var rdmNumber = Math.floor(Math.random() * numbersDuplicate.length);
+
+                if (positionFound.indexOf(rdmNumber) == -1) {
+                    positionFound.push(rdmNumber);
+                    matrizBoard[i][j] = numbersDuplicate[rdmNumber];
+                    numberFound = true;
+                }
+            }
+        }
+    }
 }
 
 function paintBoard() {
-    // Obtener la referencia del elemento body
+    /*// Obtener la referencia del elemento body
     var body = document.getElementsByTagName("body")[0];
 
     // Crea un elemento <table> y un elemento <tbody>
@@ -113,5 +115,5 @@ function paintBoard() {
     // appends <table> into <body>
     body.appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
-    tabla.setAttribute("border", "2");
+    tabla.setAttribute("border", "2");*/
 }
