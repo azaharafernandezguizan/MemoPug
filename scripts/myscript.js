@@ -248,6 +248,7 @@ function testAction(idBoton) {
      
         if(numberImageOldPulse != image){
             $("#gamingTable").prop('disabled',true);
+            $("#gamingTable :input").attr("disabled", true);
             setTimeout(resetOnImages, turnTime);
         }else{
             countAciertos++;
@@ -285,4 +286,5 @@ function resetOnImages(){
     $('#' + idButtonOldPulse).css("display", "block");
     $('#' + idImageOldPulse).css("display", "none");
     $("#gamingTable").prop('disabled',false);
+    $("#gamingTable :input").removeAttr("disabled");
 }
