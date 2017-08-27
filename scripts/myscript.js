@@ -247,7 +247,7 @@ function testAction(idBoton) {
         $('#' + idImageNewPulse).css("display", "block");
      
         if(numberImageOldPulse != image){
-            $("#gamingTable").attr("disabled", "disabled").
+            $("#gamingTable").prop('disabled',true);
             setTimeout(resetOnImages, turnTime);
         }else{
             countAciertos++;
@@ -284,5 +284,5 @@ function resetOnImages(){
     $('#' + idImageNewPulse).css("display", "none");
     $('#' + idButtonOldPulse).css("display", "block");
     $('#' + idImageOldPulse).css("display", "none");
-    $("#gamingTable").removeAttr('disabled');
+    $("#gamingTable").prop('disabled',false);
 }
